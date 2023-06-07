@@ -1,12 +1,18 @@
+import Modal from "../Components/Modal/Modal"
 import { useState, useEffect, useContext } from "react"
 
 
 export const useModal = (initialValue = false) => {
    const [state, setState] = useState(initialValue)
 
-   const toggle = () => {
-      setState((prev) => !prev)
+   const isAddModalOpen = () => {
+      if (!state) setState(true)
    }
 
-   return [state, toggle]
+   const isAddModalClose = () => {
+      if (state) setState(false)
+
+   }
+
+   return [state, isAddModalOpen, isAddModalClose]
 }

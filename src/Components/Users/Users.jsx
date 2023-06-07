@@ -1,7 +1,12 @@
+import { usersTodo } from "../../redux/Usertodo/selectiors"
+import { useDispatch, useSelector } from 'react-redux'
 import User from "../UserCard/UserCard"
 import "./Users.scss"
 
+
 function Users() {
+   const users = useSelector(usersTodo)
+
    const initialState = [
       // {
       //    id: "1",
@@ -40,7 +45,7 @@ function Users() {
 
    return (
       <div className='cards'>
-         {initialState.length < 1 ? <div>Empty</div> : initialState.map((user) => <User key={user.id} {...user} />)}
+         {users.length < 1 ? <div>Empty</div> : users.map((user) => <User key={user.id} {...user} />)}
       </div>
    )
 }
