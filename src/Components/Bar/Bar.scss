@@ -1,0 +1,14 @@
+.bar{
+   width: 100%;
+   background-color: rgba(128, 0, 128, 0.466);
+   padding: 32px 16px;
+   border-radius: 16px;
+   border: 3px solid rgb(255, 255, 255);
+   margin: 32px 0;
+
+   & .bar-content{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+   }
+}
