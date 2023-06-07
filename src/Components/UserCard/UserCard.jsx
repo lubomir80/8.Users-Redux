@@ -1,8 +1,8 @@
-import "./User.scss"
+import "./UserCard.scss"
 import { AiTwotoneEdit, AiOutlineClose } from "react-icons/ai"
 
 
-function User({ name, avatar, age, status, actions }) {
+function UserCard({ name, avatar, age, status, actions }) {
 
    return (
       <article className='card'>
@@ -37,4 +37,4 @@ function User({ name, avatar, age, status, actions }) {
    )
 }
 
-export default User
+export default UserCard

@@ -1,0 +1,41 @@
+
+.modal-form{
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+   min-width: 320px;
+
+
+   & .form-grup{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      
+   
+
+      & label{
+         font-size: 16px;
+         font-weight: 600;
+      }
+
+      & input, select{
+         padding: 8px;
+         width: 100%;
+         border-radius: 4px;
+      }
+   }
+
+   & .oneline-box{
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+   }
+
+   & .ages{
+      flex: 1;
+   }
+
+   & .status{
+      flex: 1;
+   }
+}
