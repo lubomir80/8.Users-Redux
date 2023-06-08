@@ -1,9 +1,9 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addUser } from "../../redux/Usertodo/usertodoSlice"
 import "./Form.scss"
 
-function Form() {
+function Form({ onClickUser }) {
+
    const dispatch = useDispatch()
    const [formUser, setFormUser] = useState({
       avatar: "",
@@ -30,7 +30,7 @@ function Form() {
 
    const onSubmitHandler = (e) => {
       e.preventDefault()
-      dispatch(addUser(formUser))
+      dispatch(onClickUser(formUser))
       onUserClearHadler()
    }
 

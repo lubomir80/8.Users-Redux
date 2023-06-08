@@ -1,11 +1,14 @@
 import "./UserCard.scss"
 import { AiTwotoneEdit, AiOutlineClose } from "react-icons/ai"
 import { useDispatch } from "react-redux"
-import { removeUser } from "../../redux/Usertodo/usertodoSlice"
+import { addUser, removeUser } from "../../redux/Usertodo/usertodoSlice"
+import { useModal } from "../../hook/useModal"
+import Modal from "../Modal/Modal"
 
 
 function UserCard({ id, name, avatar, age, status, actions }) {
    const dispatch = useDispatch()
+   const [state, isAddModalOpen, isAddModalClose] = useModal()
 
    const removeHandler = (id) => {
       const check = confirm("Do you want delete the current card?");
@@ -20,7 +23,7 @@ function UserCard({ id, name, avatar, age, status, actions }) {
    return (
       <article className='card'>
          <div className="options">
-            <button ><AiTwotoneEdit /></button>
+            <button onClick={() => isAddModalOpen()}><AiTwotoneEdit /></button>
             <button onClick={() => removeHandler(id)}><AiOutlineClose /></button>
          </div>
          <div className="article" >
@@ -43,10 +46,10 @@ function UserCard({ id, name, avatar, age, status, actions }) {
             </div>
             <div className="grup flex-3">
                <p className="grup-name">Actions</p>
-               <div className="actions">{actions}</div>
+               <div>{actions}</div>
             </div>
          </div>
-
+         {state && <Modal close={isAddModalClose} />}
       </article>
    )
 }

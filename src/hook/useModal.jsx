@@ -1,5 +1,4 @@
-import Modal from "../Components/Modal/Modal"
-import { useState, useEffect, useContext } from "react"
+import { useState } from "react"
 
 
 export const useModal = (initialValue = false) => {
@@ -16,3 +15,4 @@ export const useModal = (initialValue = false) => {
 
    return [state, isAddModalOpen, isAddModalClose]
 }
+

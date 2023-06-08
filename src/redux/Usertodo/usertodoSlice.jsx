@@ -2,7 +2,40 @@ import { createSlice, nanoid } from "@reduxjs/toolkit"
 
 
 const initialState = {
-   userstodo: [],
+   userstodo: [
+      {
+         id: "1",
+         avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7fo-OWJ8FTU_BkyO9JuormaHqhltTjwUFXktOLhE&s",
+         name: "Zidan",
+         age: "18",
+         status: "Yes",
+         actions: "Edited avatar 5 minutes ago"
+      },
+      {
+         id: "2",
+         avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7fo-OWJ8FTU_BkyO9JuormaHqhltTjwUFXktOLhE&s",
+         name: "Kate",
+         age: "48",
+         status: "Yes",
+         actions: "Edited avatar 5 minutes ago"
+      },
+      {
+         id: "3",
+         avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7fo-OWJ8FTU_BkyO9JuormaHqhltTjwUFXktOLhE&s",
+         name: "Adam",
+         age: "50",
+         status: "No",
+         actions: "Edited avatar 5 minutes ago"
+      },
+      {
+         id: "4",
+         avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7fo-OWJ8FTU_BkyO9JuormaHqhltTjwUFXktOLhE&s",
+         name: "Boris",
+         age: "23",
+         status: "Yes",
+         actions: "Edited avatar 5 minutes ago"
+      },
+   ],
    filter: "-",
 }
 
@@ -11,6 +44,9 @@ const usertodoSlice = createSlice({
    name: "usertodo",
    initialState,
    reducers: {
+      setFilter: (state, { payload }) => {
+         state.filter = payload
+      },
       addUser: {
          reducer: (state, { payload }) => {
             state.userstodo.push(payload)
@@ -26,9 +62,14 @@ const usertodoSlice = createSlice({
             state.userstodo.splice(userIndex, 1)
          },
       },
+      removeAllUser: {
+         reducer: (state) => {
+            state.userstodo = []
+         },
+      },
    },
 })
 
 
 export const usertodoReducer = usertodoSlice.reducer
-export const { addUser, removeUser } = usertodoSlice.actions
+export const { addUser, removeUser, removeAllUser, setFilter } = usertodoSlice.actions

@@ -8,6 +8,11 @@
 
    & button{
       color: white;
+
+      &:disabled{
+         cursor: not-allowed;
+         background-color: rgb(183, 180, 184);
+      }
    }
 
    .green{
