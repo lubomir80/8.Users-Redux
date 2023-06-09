@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import "./Filter.scss"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setFilter } from "../../redux/Usertodo/usertodoSlice"
+import { selectoruserTodo } from "../../redux/Usertodo/selectors"
 
 function Filter() {
    const options = [
@@ -15,6 +16,9 @@ function Filter() {
 
    const dispatch = useDispatch()
    const [sortValue, setSortValue] = useState("");
+   const users = useSelector(selectoruserTodo)
+   const filterDisable = users.length > 1;
+
 
    useEffect(() => {
       dispatch(setFilter(sortValue))
@@ -25,14 +29,16 @@ function Filter() {
    }
 
 
-
    return (
       <div className="filter">
-         <span>Sort</span>
+         <h4>Sort </h4>
+         <span>{!filterDisable ? "Should be at least 2 item" : ""}</span>
          <select
+
             name="sort"
             id="sort"
             onChange={onChangeValue}
+            disabled={!filterDisable}
             value={sortValue}>
             {options.map(item =>
                <option key={item}>{item}</option>)}

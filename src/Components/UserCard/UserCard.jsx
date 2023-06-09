@@ -20,6 +20,15 @@ function UserCard({ id, name, avatar, age, status, actions }) {
    }
 
    const editValue = { id, name, avatar, age, status, actions }
+   const image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7fo-OWJ8FTU_BkyO9JuormaHqhltTjwUFXktOLhE&s"
+
+   function check(img) {
+      let http = "https://"
+      return avatar = img.includes(http) ? img : image;
+   }
+   check(avatar)
+
+
 
 
    return (
