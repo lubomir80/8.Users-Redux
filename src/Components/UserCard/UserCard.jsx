@@ -1,7 +1,7 @@
 import "./UserCard.scss"
 import { AiTwotoneEdit, AiOutlineClose } from "react-icons/ai"
 import { useDispatch } from "react-redux"
-import { addUser, removeUser } from "../../redux/Usertodo/usertodoSlice"
+import { editUser, removeUser } from "../../redux/Usertodo/usertodoSlice"
 import { useModal } from "../../hook/useModal"
 import Modal from "../Modal/Modal"
 
@@ -18,6 +18,8 @@ function UserCard({ id, name, avatar, age, status, actions }) {
          return
       }
    }
+
+   const editValue = { id, name, avatar, age, status, actions }
 
 
    return (
@@ -49,7 +51,12 @@ function UserCard({ id, name, avatar, age, status, actions }) {
                <div>{actions}</div>
             </div>
          </div>
-         {state && <Modal close={isAddModalClose} />}
+         {state &&
+            <Modal
+               close={isAddModalClose}
+               onClickUser={editUser}
+               editValue={editValue} />
+         }
       </article>
    )
 }

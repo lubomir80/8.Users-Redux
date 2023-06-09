@@ -4,14 +4,14 @@ import "./Modal.scss"
 import Form from '../Form/Form';
 
 
-function Modal({ close, onClickUser }) {
+function Modal({ close, onClickUser, editValue }) {
 
    return ReactDOM.createPortal(
       <div className='modal'>
          <button className='modal__close-btn' onClick={() => close()}>
             <AiOutlineClose />
          </button>
-         <Form onClickUser={onClickUser} />
+         <Form onSubmit={onClickUser} onClick={close} editValue={editValue} />
       </div>,
       document.getElementById("modal")
    );

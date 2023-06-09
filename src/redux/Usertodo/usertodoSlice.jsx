@@ -44,12 +44,18 @@ const usertodoSlice = createSlice({
    name: "usertodo",
    initialState,
    reducers: {
+
       setFilter: (state, { payload }) => {
          state.filter = payload
       },
+      editUser: (state, { payload }) => {
+         const userIndex = state.userstodo.findIndex(todo => todo.id === payload.id)
+         state.userstodo[userIndex] = payload
+
+      },
       addUser: {
          reducer: (state, { payload }) => {
-            state.userstodo.push(payload)
+            state.userstodo.unshift(payload)
          },
          prepare: (user) => {
             const id = nanoid()
@@ -58,7 +64,7 @@ const usertodoSlice = createSlice({
       },
       removeUser: {
          reducer: (state, { payload }) => {
-            const userIndex = state.userstodo.indexOf(payload);
+            const userIndex = state.userstodo.findIndex(todo => todo.id === payload)
             state.userstodo.splice(userIndex, 1)
          },
       },
@@ -72,4 +78,4 @@ const usertodoSlice = createSlice({
 
 
 export const usertodoReducer = usertodoSlice.reducer
-export const { addUser, removeUser, removeAllUser, setFilter } = usertodoSlice.actions
+export const { addUser, removeUser, removeAllUser, setFilter, editUser } = usertodoSlice.actions

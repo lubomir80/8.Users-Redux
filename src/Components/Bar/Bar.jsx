@@ -1,6 +1,4 @@
-import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { addUser } from "../../redux/Usertodo/usertodoSlice"
+
 import Actions from "../Actions/Actions"
 import Filter from "../Filter/Filter"
 import "./Bar.scss"

@@ -3,14 +3,14 @@ import Modal from "../Modal/Modal"
 import { useDispatch, useSelector } from "react-redux"
 import { useModal } from "../../hook/useModal"
 import { removeAllUser } from "../../redux/Usertodo/usertodoSlice"
-import { usersTodo } from "../../redux/Usertodo/selectors"
+import { selectoruserTodo } from "../../redux/Usertodo/selectors"
 import { addUser } from "../../redux/Usertodo/usertodoSlice"
 
 
 
 function Actions() {
    const dispatch = useDispatch()
-   const disableBtn = useSelector(usersTodo).length < 1 ? false : true;
+   const disableBtn = useSelector(selectoruserTodo).length < 1 ? false : true;
    const [state, isAddModalOpen, isAddModalClose] = useModal()
 
    const removeHandler = () => {

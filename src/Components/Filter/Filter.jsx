@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./Filter.scss"
 import { useDispatch } from "react-redux"
 import { setFilter } from "../../redux/Usertodo/usertodoSlice"
@@ -14,12 +14,16 @@ function Filter() {
 
 
    const dispatch = useDispatch()
-   const [sortValue, setSortValue] = useState("-");
+   const [sortValue, setSortValue] = useState("");
+
+   useEffect(() => {
+      dispatch(setFilter(sortValue))
+   }, [sortValue])
 
    const onChangeValue = (e) => {
       setSortValue(e.target.value)
-      dispatch(setFilter(sortValue))
    }
+
 
 
    return (
