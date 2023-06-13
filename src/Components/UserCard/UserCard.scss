@@ -100,3 +100,39 @@
 
 }
 
+
+
+@media screen and (max-width: 650px) {
+   .article{
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+   }
+
+   .box{
+      width: 100%;
+      flex-direction: column;
+   }
+
+   .grup{
+      display: flex;
+      align-items: stretch;
+      gap: 20px;
+      flex-direction: row;
+      max-width: 350px;
+      width: 100%;
+      justify-content: space-between;
+   
+   & > p{
+      // width: 50%;
+      flex: 1;
+   }
+
+   }
+
+
+
+   // .grup-name{
+   //    background-color: aliceblue;
+   // }
+ }

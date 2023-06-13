@@ -49,15 +49,15 @@ function UserCard({ id, name, avatar, age, status, actions }) {
             </div>
             <div className="grup flex-1">
                <p className="grup-name">Age</p>
-               <div className="age">{age} y.o.</div>
+               <p className="age">{age} y.o.</p>
             </div>
             <div className="grup flex-1">
                <p className="grup-name">Status</p>
-               <div className={status === "Yes" ? `status green` : `status red`}>{status === "Yes" ? "Online" : "Offline"}</div>
+               <p className={status === "Yes" ? `status green` : `status red`}>{status === "Yes" ? "Online" : "Offline"}</p>
             </div>
             <div className="grup flex-3">
                <p className="grup-name">Actions</p>
-               <div>{actions}</div>
+               <p>{actions}</p>
             </div>
          </div>
          {state &&

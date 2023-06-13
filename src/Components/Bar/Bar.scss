@@ -12,3 +12,11 @@
       justify-content: space-around;
    }
 }
+
+@media screen and (max-width: 650px) {
+   .bar-content{
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+   }
+ }
