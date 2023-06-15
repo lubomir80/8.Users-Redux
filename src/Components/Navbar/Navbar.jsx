@@ -1,9 +1,9 @@
-import "./Navbar.scss"
+import style from "./Navbar.module.scss"
 
 function Navbar() {
    return (
-      <header className="navbar">
-         <a href="#" className="logo">Logo</a>
+      <header className={style.header}>
+         <a href="#" className={style.logo}>Logo</a>
       </header>
    )
 }

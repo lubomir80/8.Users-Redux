@@ -1,22 +1,15 @@
+import style from "./Filter.module.scss"
 import { useState, useEffect } from "react"
-import "./Filter.scss"
 import { useDispatch, useSelector } from "react-redux"
 import { setFilter } from "../../redux/Usertodo/usertodoSlice"
 import { selectoruserTodo } from "../../redux/Usertodo/selectors"
+import { options } from "../../data"
 
 function Filter() {
-   const options = [
-      "-",
-      "Alphabetical (A to Z)",
-      "Alphabetical (Z to A)",
-      "Age (Low to Hight)",
-      "Age (Hight to Low)"
-   ]
-
 
    const dispatch = useDispatch()
-   const [sortValue, setSortValue] = useState("");
    const users = useSelector(selectoruserTodo)
+   const [sortValue, setSortValue] = useState("");
    const filterDisable = users.length > 1;
 
 
@@ -24,23 +17,21 @@ function Filter() {
       dispatch(setFilter(sortValue))
    }, [sortValue])
 
-   const onChangeValue = (e) => {
-      setSortValue(e.target.value)
-   }
 
 
    return (
-      <div className="filter">
+      <div className={style.filter}>
          <h4>Sort </h4>
-         <span>{!filterDisable ? "Should be at least 2 item" : ""}</span>
+         {!filterDisable && <span>Should be at least 2 item</span>}
          <select
-
             name="sort"
             id="sort"
-            onChange={onChangeValue}
+            onChange={(e) => setSortValue(e.target.value)}
+            value={sortValue}
             disabled={!filterDisable}
-            value={sortValue}>
-            {options.map(item =>
+         >
+
+            {Object.values(options).map(item =>
                <option key={item}>{item}</option>)}
          </select>
       </div>

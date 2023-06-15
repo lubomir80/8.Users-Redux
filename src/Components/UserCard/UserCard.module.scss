@@ -1,12 +1,15 @@
+@import "../../variables.scss";
+
+
 .card{    
    overflow: hidden;
    display: flex;
    width: 100%;
    flex-direction: column;
-   border: 1px solid rgb(128, 0, 128);
+   border: 1px solid $clr-purpur;
    border-radius: 16px;
    align-items: center;
-   background-color: rgb(255, 255, 255);
+   background-color: $clr-white;
    
 
    & .options{
@@ -19,7 +22,7 @@
       & button{
          display: flex;
          padding: 8px;
-         color: purple;
+         color: $clr-purpur;
       }
    }
 
@@ -33,11 +36,11 @@
       padding: 16px;
    }
 
-   & .img-box{
+   & .imgBox{
       padding: 1px;
       overflow: hidden;
       border-radius: 50%;
-      border: 3px solid purple;
+      border: 3px solid $clr-purpur;
 
       & img{
          height: 115px;
@@ -65,13 +68,13 @@
 
    & .status.red{
       &::after{
-         background-color: red;
+         background-color: $clr-red;
       }
    }
 
    & .status.green{     
       &::after{
-         background-color: green;
+         background-color: $clr-green;
       }
    }
 
@@ -85,54 +88,45 @@
       flex: 1;
    }
 
-   & .grup-name{
+   & .grupName{
       font-style: italic;
       font-weight: 700;
    }
 
-   & .flex-1{
+   & .flex1{
       flex: 1;
    }
 
-   & .flex-3{
+   & .flex3{
       flex: 3;
    }
 
+   @media screen and (max-width: 650px) {
+      .article{
+         display: flex;
+         flex-direction: column;
+         gap: 20px;
+      }
+   
+      .box{
+         width: 100%;
+         flex-direction: column;
+      }
+   
+      .grup{
+         display: flex;
+         align-items: stretch;
+         gap: 20px;
+         flex-direction: row;
+         max-width: 350px;
+         width: 100%;
+         justify-content: space-between;
+      
+         & > p{
+            flex: 1;
+         }
+      }
+    }
 }
 
 
-
-@media screen and (max-width: 650px) {
-   .article{
-     display: flex;
-     flex-direction: column;
-     gap: 20px;
-   }
-
-   .box{
-      width: 100%;
-      flex-direction: column;
-   }
-
-   .grup{
-      display: flex;
-      align-items: stretch;
-      gap: 20px;
-      flex-direction: row;
-      max-width: 350px;
-      width: 100%;
-      justify-content: space-between;
-   
-   & > p{
-      // width: 50%;
-      flex: 1;
-   }
-
-   }
-
-
-
-   // .grup-name{
-   //    background-color: aliceblue;
-   // }
- }

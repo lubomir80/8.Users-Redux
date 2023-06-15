@@ -1,25 +1,27 @@
+@import "../../variables.scss";
+
 .actions{
    padding: 16px;
    border-radius: 16px;
-   background-color: rgb(255, 255, 255);
+   background-color: $clr-white;
    display: flex;
    align-items: center;
    gap: 16px;
-
+   
    & button{
-      color: white;
+      color: $clr-white;
 
       &:disabled{
          cursor: not-allowed;
-         background-color: rgb(183, 180, 184);
+         background-color: $clr-grey;
       }
    }
 
    .green{
-      background-color: rgb(5, 190, 5);
+      background-color: $clr-green;
    }
 
    .red{
-      background-color: rgb(228, 66, 66);
+      background-color: $clr-red;
    }
 }

@@ -1,4 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
+import { options } from "../../data";
+
 
 export const selectoruserTodo = state => state.userstodo
 export const selectorFilter = state => state.filter
@@ -37,21 +39,21 @@ export const selectorUserFilter = createSelector(
       let newTodos = [...todos]
 
       switch (filter) {
-         case "Alphabetical (A to Z)":
+         case options.alphabeticalStartEnd:
             return newTodos.sort((a, b) => {
                let x = a.name.toUpperCase(),
                   y = b.name.toUpperCase();
                return x == y ? 0 : x > y ? 1 : -1;
             })
-         case "Alphabetical (Z to A)":
+         case options.alphabeticalEndStart:
             return newTodos.sort((a, b) => {
                let x = a.name.toUpperCase(),
                   y = b.name.toUpperCase();
                return x == y ? 0 : x < y ? 1 : -1;
             })
-         case "Age (Low to Hight)":
+         case options.ageLowHight:
             return newTodos.sort((a, b) => a.age - b.age);
-         case "Age (Hight to Low)":
+         case options.ageHightLow:
             return newTodos.sort((a, b) => b.age - a.age);
          default:
             return todos

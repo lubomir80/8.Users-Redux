@@ -1,4 +1,4 @@
-import "./Actions.scss"
+import style from "./Actions.module.scss"
 import Modal from "../Modal/Modal"
 import { useDispatch, useSelector } from "react-redux"
 import { useModal } from "../../hook/useModal"
@@ -15,20 +15,17 @@ function Actions() {
 
    const removeHandler = () => {
       const check = confirm("Do you want delete all user cards?");
-      if (check) {
-         dispatch(removeAllUser())
-      } else {
-         return
-      }
+      check && dispatch(removeAllUser())
    }
 
+
    return (
-      <div className="actions">
-         <button className="green" onClick={() => isAddModalOpen()}>Add</button>
+      <div className={style.actions}>
+         <button className={style.green} onClick={isAddModalOpen}>Add</button>
          <button
             disabled={!disableBtn}
-            className="red"
-            onClick={() => removeHandler()}>Remove all</button>
+            className={style.red}
+            onClick={removeHandler}>Remove all</button>
 
          {state && <Modal close={isAddModalClose} onClickUser={addUser} />}
       </div>

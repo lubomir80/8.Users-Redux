@@ -1,33 +1,14 @@
+import style from "./Form.module.scss"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import "./Form.scss"
+import { formAgeRange, formInitialState } from "../../data"
 
 function Form({ onSubmit, editValue, onClick }) {
    const dispatch = useDispatch()
-   const ageRange = {
-      minAge: 18,
-      maxAge: 100
-   }
+   const [formUser, setFormUser] = useState(editValue ? editValue : formInitialState)
+   const { avatar, name, age, status, actions } = formUser;
 
-   const [formUser, setFormUser] = useState(editValue ? editValue :
-      {
-         avatar: "",
-         name: "",
-         age: "",
-         status: "Yes",
-         actions: ""
-      })
-
-
-   const onUserClearHadler = () => {
-      setFormUser({
-         avatar: "",
-         name: "",
-         age: "",
-         status: "",
-         actions: ""
-      })
-   }
+   const disableBtn = avatar && name && age && status && actions;
 
    const onChangeHandler = (e) => {
       const { name, value } = e.target;
@@ -37,60 +18,57 @@ function Form({ onSubmit, editValue, onClick }) {
    const onSubmitHandler = (e) => {
       e.preventDefault()
       dispatch(onSubmit(formUser))
-      onUserClearHadler()
+      setFormUser(formInitialState)
       onClick()
    }
 
-   const { avatar, name, age, status, actions, id } = formUser;
-   const disableBtn = Boolean(avatar) && Boolean(name) && Boolean(age) && Boolean(status) && Boolean(actions);
-
 
    return (
-      <form onSubmit={onSubmitHandler} className='modal-form'>
-         <div className='form-grup'>
+      <form onSubmit={onSubmitHandler} className={style.modalForm}>
+         <div className={style.formGrup}>
             <label htmlFor="avatar">Avatar</label>
             <span>Put link of img</span>
             <input
                onChange={onChangeHandler}
-               value={formUser.avatar}
+               value={avatar}
                type="text"
                id='avatar'
                name='avatar'
                required />
          </div>
-         <div className='form-grup'>
+         <div className={style.formGrup}>
             <label htmlFor="name">Name</label>
             <span>Put your name</span>
             <input
                onChange={onChangeHandler}
-               value={formUser.name}
+               value={name}
                type="text"
                id='name'
                name='name'
                required />
          </div>
-         <div className='oneline-box'>
+         <div className={style.onelineBox}>
 
-            <div className='form-grup ages'>
+            <div className={`${style.formGrup} ${style.ages}`}>
                <label htmlFor="age">Age</label>
-               <span>From {ageRange.minAge} - {ageRange.maxAge}</span>
+               <span>From {formAgeRange.minAge} - {formAgeRange.maxAge}</span>
                <input
                   onChange={onChangeHandler}
-                  value={formUser.age}
+                  value={age}
                   type="number"
                   id='age'
                   name='age'
-                  min={ageRange.minAge}
-                  max={ageRange.maxAge}
+                  min={formAgeRange.minAge}
+                  max={formAgeRange.maxAge}
                   required />
             </div>
-            <div className='form-grup status'>
+            <div className={`${style.formGrup} ${style.status}`}>
                <label htmlFor="status">Status</label>
                <span>Online/Offline</span>
                <select
                   name="status"
                   onChange={onChangeHandler}
-                  value={formUser.status}
+                  value={status}
                   required>
                   <option>Yes</option>
                   <option>No</option>
@@ -98,12 +76,12 @@ function Form({ onSubmit, editValue, onClick }) {
             </div>
 
          </div>
-         <div className='form-grup'>
+         <div className={style.formGrup}>
             <label htmlFor="actions">Actions </label>
             <span>New </span>
             <input
                onChange={onChangeHandler}
-               value={formUser.actions}
+               value={actions}
                type="text"
                id='actions'
                name='actions'
