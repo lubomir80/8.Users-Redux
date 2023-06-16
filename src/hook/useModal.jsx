@@ -2,17 +2,12 @@ import { useState } from "react"
 
 
 export const useModal = (initialValue = false) => {
-   const [state, setState] = useState(initialValue)
+   const [openModal, setOpenModal] = useState(initialValue)
 
-   const isAddModalOpen = () => {
-      if (!state) setState(true)
-   }
+   const onOpenModal = () => !openModal && setOpenModal(true)
+   const onCloseModal = () => openModal && setOpenModal(false)
 
-   const isAddModalClose = () => {
-      if (state) setState(false)
-
-   }
-
-   return [state, isAddModalOpen, isAddModalClose]
+   return { openModal, onOpenModal, onCloseModal }
 }
+
 

@@ -5,30 +5,36 @@ import { useModal } from "../../hook/useModal"
 import { removeAllUser } from "../../redux/Usertodo/usertodoSlice"
 import { selectoruserTodo } from "../../redux/Usertodo/selectors"
 import { addUser } from "../../redux/Usertodo/usertodoSlice"
-
+import Form from "../Form/Form"
 
 
 function Actions() {
    const dispatch = useDispatch()
-   const disableBtn = useSelector(selectoruserTodo).length < 1 ? false : true;
-   const [state, isAddModalOpen, isAddModalClose] = useModal()
+   const disableBtn = useSelector(selectoruserTodo)
+   const { openModal, onOpenModal, onCloseModal } = useModal()
 
-   const removeHandler = () => {
-      const check = confirm("Do you want delete all user cards?");
-      check && dispatch(removeAllUser())
+   const removeAllCardsHandler = () => {
+      const messageConfirmation = "Do you want delete all user cards?"
+      const removeConfirmation = confirm(messageConfirmation);
+      removeConfirmation && dispatch(removeAllUser())
    }
+
+
 
 
    return (
       <div className={style.actions}>
-         <button className={style.green} onClick={isAddModalOpen}>Add</button>
+         <button className={style.green} onClick={onOpenModal}>Add</button>
          <button
-            disabled={!disableBtn}
+            disabled={!disableBtn.length}
             className={style.red}
-            onClick={removeHandler}>Remove all</button>
+            onClick={removeAllCardsHandler}>Remove all</button>
 
-         {state && <Modal close={isAddModalClose} onClickUser={addUser} />}
-      </div>
+         {openModal &&
+            <Modal onCloseModal={onCloseModal}>
+               <Form onCloseModal={onCloseModal} onSubmit={addUser} />
+            </Modal>}
+      </div >
    )
 }
 

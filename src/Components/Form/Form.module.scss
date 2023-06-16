@@ -45,4 +45,21 @@
    & .status{
       flex: 1;
    }
+
+   & .submitBtn{
+      margin-top: 24px;
+      padding: 8px 0;
+      color: $clr-white;
+      background-color: $clr-purpur;
+      border: 3px solid transparent;
+
+      &:hover{
+         border: 3px solid $clr-white;
+      }
+
+      &:disabled{
+         cursor: not-allowed;
+         background-color: $clr-grey;
+      }
+   }
 }

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { formAgeRange, formInitialState } from "../../data"
 
-function Form({ onSubmit, editValue, onClick }) {
+function Form({ onSubmit, editValue, onCloseModal }) {
    const dispatch = useDispatch()
    const [formUser, setFormUser] = useState(editValue ? editValue : formInitialState)
    const { avatar, name, age, status, actions } = formUser;
@@ -19,7 +19,7 @@ function Form({ onSubmit, editValue, onClick }) {
       e.preventDefault()
       dispatch(onSubmit(formUser))
       setFormUser(formInitialState)
-      onClick()
+      onCloseModal()
    }
 
 
@@ -90,7 +90,7 @@ function Form({ onSubmit, editValue, onClick }) {
          <button
             disabled={!disableBtn}
             type='submit'
-            className='modal__submit-btn'>
+            className={style.submitBtn}>
             {editValue ? "Update" : "Add"}
          </button>
       </form>
