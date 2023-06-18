@@ -48,31 +48,31 @@ const usertodoSlice = createSlice({
       setFilter: (state, { payload }) => {
          state.filter = payload
       },
-      editUser: (state, { payload }) => {
-         const userIndex = state.userstodo.findIndex(todo => todo.id === payload.id)
-         state.userstodo[userIndex] = payload
+      // editUser: (state, { payload }) => {
+      //    const userIndex = state.userstodo.findIndex(todo => todo.id === payload.id)
+      //    state.userstodo[userIndex] = payload
 
-      },
-      addUser: {
-         reducer: (state, { payload }) => {
-            state.userstodo.unshift(payload)
-         },
-         prepare: (user) => {
-            const id = nanoid()
-            return { payload: { id, ...user } }
-         }
-      },
-      removeUser: {
-         reducer: (state, { payload }) => {
-            const userIndex = state.userstodo.findIndex(todo => todo.id === payload)
-            state.userstodo.splice(userIndex, 1)
-         },
-      },
-      removeAllUser: {
-         reducer: (state) => {
-            state.userstodo = []
-         },
-      },
+      // },
+      // addUser: {
+      //    reducer: (state, { payload }) => {
+      //       state.userstodo.unshift(payload)
+      //    },
+      //    prepare: (user) => {
+      //       const id = nanoid()
+      //       return { payload: { id, ...user } }
+      //    }
+      // },
+      // removeUser: {
+      //    reducer: (state, { payload }) => {
+      //       const userIndex = state.userstodo.findIndex(todo => todo.id === payload)
+      //       state.userstodo.splice(userIndex, 1)
+      //    },
+      // },
+      // removeAllUser: {
+      //    reducer: (state) => {
+      //       state.userstodo = []
+      //    },
+      // },
    },
 })
 

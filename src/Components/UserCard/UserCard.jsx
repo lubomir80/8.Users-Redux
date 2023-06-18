@@ -1,22 +1,23 @@
 import style from "./UserCard.module.scss"
 import { AiTwotoneEdit, AiOutlineClose } from "react-icons/ai"
-import { useDispatch } from "react-redux"
-import { editUser, removeUser } from "../../redux/Usertodo/usertodoSlice"
 import { useModal } from "../../hook/useModal"
 import { imageSubstitute } from "../../data"
 import Modal from "../Modal/Modal"
 import Form from "../Form/Form"
+import { useEditUserTodosMutation, useRemoveUserTodosMutation } from "../../redux/userTodoApi"
 
 
 function UserCard({ id, name, avatar, age, status, actions }) {
    const editValue = { id, name, avatar, age, status, actions }
-   const dispatch = useDispatch()
    const { openModal, onOpenModal, onCloseModal } = useModal()
+
+   const [removeUserTodos] = useRemoveUserTodosMutation()
+   const [editUserTodos] = useEditUserTodosMutation()
 
    const removeCardHandler = (id) => {
       const messageConfirmation = "Do you want delete the current card?"
       const removeConfirmation = confirm(messageConfirmation);
-      removeConfirmation && dispatch(removeUser(id))
+      removeConfirmation && removeUserTodos(id)
    }
 
    const avatarValidation = (img) => {
@@ -62,7 +63,7 @@ function UserCard({ id, name, avatar, age, status, actions }) {
                <Form
                   editValue={editValue}
                   onCloseModal={onCloseModal}
-                  onSubmit={editUser} />
+                  onSubmit={editUserTodos} />
             </Modal>
          }
       </article >

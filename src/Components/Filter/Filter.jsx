@@ -1,16 +1,15 @@
 import style from "./Filter.module.scss"
 import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { setFilter } from "../../redux/Usertodo/usertodoSlice"
-import { selectoruserTodo } from "../../redux/Usertodo/selectors"
 import { options } from "../../data"
+import { useGetUserTodosQuery } from "../../redux/userTodoApi"
 
 function Filter() {
-
+   const { data, isSuccess } = useGetUserTodosQuery()
    const dispatch = useDispatch()
-   const users = useSelector(selectoruserTodo)
    const [sortValue, setSortValue] = useState("");
-   const filterDisable = users.length > 1;
+   const filterDisable = isSuccess && data.length > 1;
 
 
    useEffect(() => {

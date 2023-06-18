@@ -1,10 +1,10 @@
 import style from "./Form.module.scss"
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { formAgeRange, formInitialState } from "../../data"
 
+
 function Form({ onSubmit, editValue, onCloseModal }) {
-   const dispatch = useDispatch()
+
    const [formUser, setFormUser] = useState(editValue ? editValue : formInitialState)
    const { avatar, name, age, status, actions } = formUser;
 
@@ -17,7 +17,7 @@ function Form({ onSubmit, editValue, onCloseModal }) {
 
    const onSubmitHandler = (e) => {
       e.preventDefault()
-      dispatch(onSubmit(formUser))
+      onSubmit(formUser)
       setFormUser(formInitialState)
       onCloseModal()
    }
