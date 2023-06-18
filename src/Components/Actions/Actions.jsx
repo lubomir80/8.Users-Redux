@@ -20,8 +20,6 @@ function Actions() {
    }
 
 
-
-
    return (
       <div className={style.actions}>
          <button className={style.green} onClick={onOpenModal}>Add</button>
