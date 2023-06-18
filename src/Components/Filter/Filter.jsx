@@ -16,8 +16,6 @@ function Filter() {
       dispatch(setFilter(sortValue))
    }, [sortValue])
 
-
-
    return (
       <div className={style.filter}>
          <h4>Sort </h4>

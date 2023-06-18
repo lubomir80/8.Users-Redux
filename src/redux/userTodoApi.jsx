@@ -35,6 +35,14 @@ export const userTodoApi = createApi({
          }),
          invalidatesTags: ["users"]
       }),
+      removeAllUserTodos: builder.mutation({
+         query: () => ({
+            url: `users`,
+            method: "PUT",
+
+         }),
+         invalidatesTags: ["users"]
+      }),
    })
 })
 

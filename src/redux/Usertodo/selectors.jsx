@@ -6,31 +6,31 @@ export const selectoruserTodo = state => state.todos.userstodo
 export const selectorFilter = state => state.todos.filter
 
 
-export const selectorUserFilter = state => {
-   const todos = selectoruserTodo(state)
+export const selectorUserFilter = (state, usersTodos) => {
    const filter = selectorFilter(state)
-   let newTodos = [...todos]
+
 
    switch (filter) {
-      case "Alphabetical (A to Z)":
-         return newTodos.sort((a, b) => {
+      case options.alphabeticalStartEnd:
+         return [...usersTodos].sort((a, b) => {
             let x = a.name.toUpperCase(),
                y = b.name.toUpperCase();
             return x == y ? 0 : x > y ? 1 : -1;
          })
-      case "Alphabetical (Z to A)":
-         return newTodos.sort((a, b) => {
+      case options.alphabeticalEndStart:
+         return [...usersTodos].sort((a, b) => {
             let x = a.name.toUpperCase(),
                y = b.name.toUpperCase();
             return x == y ? 0 : x < y ? 1 : -1;
          })
-      case "Age (Low to Hight)":
-         return newTodos.sort((a, b) => a.age - b.age);
-      case "Age (Hight to Low)":
-         return newTodos.sort((a, b) => b.age - a.age);
+      case options.ageLowHight:
+         return [...usersTodos].sort((a, b) => a.age - b.age);
+      case options.ageHightLow:
+         return [...usersTodos].sort((a, b) => b.age - a.age);
       default:
-         return todos
+         return usersTodos
    }
+
 }
 
 // export const selectorUserFilter = createSelector(
