@@ -2,8 +2,8 @@ import { createSelector } from "@reduxjs/toolkit";
 import { options } from "../../data";
 
 
-export const selectoruserTodo = state => state.userstodo
-export const selectorFilter = state => state.filter
+export const selectoruserTodo = state => state.todos.userstodo
+export const selectorFilter = state => state.todos.filter
 
 
 // export const selectorUserFilter = state => {

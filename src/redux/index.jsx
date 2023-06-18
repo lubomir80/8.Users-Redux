@@ -1,34 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { usertodoReducer } from './Usertodo/usertodoSlice'
-import {
-   persistStore,
-   persistReducer,
-   FLUSH,
-   REHYDRATE,
-   PAUSE,
-   PERSIST,
-   PURGE,
-   REGISTER,
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import { userTodoApi } from './userTodoApi'
 
-const persistConfig = {
-   key: 'root',
-   version: 1,
-   storage,
-   blacklist: ['filter']
-}
 
-const persistedReducer = persistReducer(persistConfig, usertodoReducer)
+
 
 export const store = configureStore({
-   reducer: persistedReducer,
+   reducer: {
+      todos: usertodoReducer,
+      [userTodoApi.reducerPath]: userTodoApi.reducer,
+   },
    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-         serializableCheck: {
-            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-         },
-      }),
+      getDefaultMiddleware().concat(userTodoApi.middleware),
 })
 
-export let persistor = persistStore(store)
