@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { usertodoReducer } from './Usertodo/usertodoSlice'
+import { filterReducer } from './Usertodo/filterSlice'
 import { userTodoApi } from './userTodoApi'
 
 
@@ -7,7 +7,7 @@ import { userTodoApi } from './userTodoApi'
 
 export const store = configureStore({
    reducer: {
-      todos: usertodoReducer,
+      filter: filterReducer,
       [userTodoApi.reducerPath]: userTodoApi.reducer,
    },
    middleware: (getDefaultMiddleware) =>

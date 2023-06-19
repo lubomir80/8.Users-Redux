@@ -1,7 +1,7 @@
 import style from "./Filter.module.scss"
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { setFilter } from "../../redux/Usertodo/usertodoSlice"
+import { setFilter } from "../../redux/Usertodo/filterSlice"
 import { options } from "../../data"
 import { useGetUserTodosQuery } from "../../redux/userTodoApi"
 

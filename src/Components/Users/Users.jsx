@@ -5,20 +5,25 @@ import { useSelector } from "react-redux"
 import { selectorUserFilter } from "../../redux/Usertodo/selectors"
 
 
+
 function Users() {
    const { data, isError, isSuccess, isLoading } = useGetUserTodosQuery()
    const filteredData = useSelector(state => selectorUserFilter(state, data))
 
 
+
    if (isLoading) {
+
       return (
          <div className={style.cards}>
+            <div className={style.loaferRing}></div>
             <div>Loading...</div>
          </div>
       )
    }
 
    if (isSuccess) {
+
       return (
          <div className={style.cards}>
             {filteredData.map((user) => <UserCard key={user.id}  {...user} />)}
@@ -26,6 +31,7 @@ function Users() {
       )
    }
    if (isError) {
+
       return (
          <div className={style.cards}>
             <div>is Error</div>
